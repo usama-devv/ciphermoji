@@ -10,4 +10,5 @@ class ThemeController extends GetxController {
     isDark.value = !isDark.value;
     Get.changeThemeMode(theme);
   }
+  Color get appBarColor => isDark.value ? Colors.grey[900]! : Colors.white;
 }

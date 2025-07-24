@@ -1,11 +1,15 @@
+import 'package:ciphermoji/view_model/controller/theme_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final ThemeController controller = Get.find();
+
+  HomeScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = false;
     return Scaffold(
       appBar: AppBar(
         title: RichText(
@@ -16,13 +20,16 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: controller.appBarColor,
         centerTitle: true,
         elevation: 4,
         actions: [
-          Switch(value: isDark, onChanged: onChanged),
+          Obx(()=>Switch(value: controller.isDark.value, onChanged: (value){
+            controller.toggleTheme();
+          }),),
         ],
       ),
+      
     );
   }
 }
