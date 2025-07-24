@@ -1,3 +1,4 @@
+import 'package:ciphermoji/view_model/controller/tab_controller.dart';
 import 'package:ciphermoji/view_model/controller/theme_controller.dart';
 import 'package:ciphermoji/views/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final ThemeController themeController = Get.put(ThemeController());
+  final MyTabController tabController = Get.put(MyTabController());
   MyApp({super.key});
 
 

@@ -2,9 +2,11 @@ import 'package:ciphermoji/view_model/controller/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeScreen extends StatelessWidget {
-  final ThemeController controller = Get.find();
+import '../view_model/controller/tab_controller.dart';
 
+class HomeScreen extends StatelessWidget {
+  final ThemeController themeController = Get.find();
+  final MyTabController myTabController = Get.find();
   HomeScreen({super.key});
 
 
@@ -20,35 +22,35 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        backgroundColor: controller.appBarColor,
+        backgroundColor: themeController.appBarColor,
         centerTitle: true,
         elevation: 4,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: GestureDetector(
-              onTap: controller.toggleTheme,
+              onTap: themeController.toggleTheme,
               child: AnimatedContainer(
                 duration: Duration(milliseconds: 300),
                 width: 50,
                 height: 30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: controller.isDark.value
+                  color: themeController.isDark.value
                       ? Colors.grey[800]
                       : Colors.yellow[600],
                 ),
                 child: Align(
-                  alignment: controller.isDark.value
+                  alignment: themeController.isDark.value
                       ? Alignment.centerRight
                       : Alignment.centerLeft,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 6),
                     child: Icon(
-                      controller.isDark.value
+                      themeController.isDark.value
                           ? Icons.nightlight_round
                           : Icons.wb_sunny,
-                      color: controller.isDark.value
+                      color: themeController.isDark.value
                           ? Colors.white
                           : Colors.orange,
                       size: 18,
@@ -59,8 +61,24 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ],
+        bottom: TabBar(
+          controller: myTabController.tabController,
+          indicatorColor: Colors.orange,
+          tabs: const [
+            Tab(icon: Icon(Icons.security), text: 'Encrypt'),
+            Tab(icon: Icon(Icons.lock_open), text: 'Decrypt'),
+            Tab(icon: Icon(Icons.history), text: 'History'),
+          ],
+        ),
       ),
-
+      body: TabBarView(
+        controller: myTabController.tabController,
+        children: const [
+          Center(child: Text("🏠 Home Tab")),
+          Center(child: Text("👤 Profile Tab")),
+          Center(child: Text("⚙️ Settings Tab")),
+        ],
+      ),
     );
   }
 }
