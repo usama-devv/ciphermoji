@@ -5,9 +5,23 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = false;
     return Scaffold(
       appBar: AppBar(
-        title: Text("CipherMoji"),
+        title: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(text: "Cipher", style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold),),
+              TextSpan(text: "Moji", style: TextStyle(color: Colors.orange, fontSize: 22, fontWeight: FontWeight.bold),),
+            ],
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 4,
+        actions: [
+          Switch(value: isDark, onChanged: onChanged),
+        ],
       ),
     );
   }
