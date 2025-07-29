@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EncryptScreen extends StatelessWidget {
+class DecryptScreen extends StatelessWidget {
   final TextEditingController messageController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final RxBool obscurePassword = true.obs;
-
-  EncryptScreen({super.key});
+  DecryptScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class EncryptScreen extends StatelessWidget {
 
             // 🔐 Password Field
             Obx(
-              () => Container(
+                  () => Container(
                 decoration: BoxDecoration(
                   color: Get.isDarkMode ? Colors.white10 : Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -92,10 +91,10 @@ class EncryptScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
 
-            // 🔒 Encrypt Button
+            // 🔒 Decrypt Button
             GestureDetector(
               onTap: () {
-                // Encrypt logic will go here
+                // Decrypt logic will go here
               },
               child: Container(
                 width: double.infinity,
@@ -117,7 +116,7 @@ class EncryptScreen extends StatelessWidget {
                 ),
                 child: const Center(
                   child: Text(
-                    "Encrypt Message",
+                    "Decrypt Message",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,

@@ -1,4 +1,7 @@
 import 'package:ciphermoji/view_model/controller/theme_controller.dart';
+import 'package:ciphermoji/views/decrypt_screen.dart';
+import 'package:ciphermoji/views/encrypt_screen.dart';
+import 'package:ciphermoji/views/history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -65,7 +68,7 @@ class HomeScreen extends StatelessWidget {
           controller: myTabController.tabController,
           indicatorColor: Colors.orange,
           tabs: const [
-            Tab(icon: Icon(Icons.security), text: 'Encrypt'),
+            Tab(icon: Icon(Icons.lock), text: 'Encrypt'),
             Tab(icon: Icon(Icons.lock_open), text: 'Decrypt'),
             Tab(icon: Icon(Icons.history), text: 'History'),
           ],
@@ -73,10 +76,10 @@ class HomeScreen extends StatelessWidget {
       ),
       body: TabBarView(
         controller: myTabController.tabController,
-        children: const [
-          Center(child: Text("🏠 Home Tab")),
-          Center(child: Text("👤 Profile Tab")),
-          Center(child: Text("⚙️ Settings Tab")),
+        children: [
+          EncryptScreen(),
+          DecryptScreen(),
+          HistoryScreen(),
         ],
       ),
     );
