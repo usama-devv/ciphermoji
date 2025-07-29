@@ -3,16 +3,18 @@ import 'package:hive/hive.dart';
 
 class HistoryController extends GetxController {
   final RxList<String> historyList = <String>[].obs;
-  final Box box = Hive.box('historyBox');
+  late Box box;
 
   @override
   void onInit() {
     super.onInit();
+    box = Hive.box('historyBox');
     loadHistory();
   }
 
   void loadHistory() {
-    historyList.value = List<String>.from(box.get('historyList', defaultValue: []));
+    final List<String> storedHistory = List<String>.from(box.get('historyList', defaultValue: []));
+    historyList.assignAll(storedHistory);
   }
 
   void addToHistory(String text) {
