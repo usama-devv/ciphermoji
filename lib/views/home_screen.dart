@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
   final MyTabController myTabController = Get.find();
   HomeScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +19,22 @@ class HomeScreen extends StatelessWidget {
         title: RichText(
           text: TextSpan(
             children: [
-              TextSpan(text: "Cipher", style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold),),
-              TextSpan(text: "Moji", style: TextStyle(color: Colors.orange, fontSize: 22, fontWeight: FontWeight.bold),),
+              TextSpan(
+                text: "Cipher",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              TextSpan(
+                text: "Moji",
+                style: TextStyle(
+                  color: Colors.orange,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ),
@@ -76,11 +89,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: TabBarView(
         controller: myTabController.tabController,
-        children: [
-          EncryptScreen(),
-          DecryptScreen(),
-          HistoryScreen(),
-        ],
+        children: [EncryptScreen(), DecryptScreen(), HistoryScreen()],
       ),
     );
   }
